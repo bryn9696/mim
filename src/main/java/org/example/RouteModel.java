@@ -1,9 +1,12 @@
 package org.example;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
 public class RouteModel {
     private List<Feature> features;
+    @SerializedName("properties")
     private Properties properties;
 
     public List<Feature> getFeatures() {
@@ -14,13 +17,13 @@ public class RouteModel {
         this.features = features;
     }
 
-    public Properties getProperties() {
-        return properties;
-    }
-
-    public void setProperties(Properties properties) {
-        this.properties = properties;
-    }
+//    public Properties getProperties() {
+//        return properties;
+//    }
+//
+//    public void setProperties(Properties properties) {
+//        this.properties = properties;
+//    }
 }
 
 class Feature {
@@ -55,8 +58,10 @@ class Feature {
 
 class Properties {
     private String mode;
+    @SerializedName("waypoints")
     private List<Waypoint> waypoints;
     private String units;
+    @SerializedName("distance")
     private double distance;
     private String distance_units;
     private double time;

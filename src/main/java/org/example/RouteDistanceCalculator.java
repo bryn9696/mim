@@ -19,7 +19,7 @@ public class RouteDistanceCalculator {
                 // Construct the API request URL with waypoints and API key
                 String apiKey = "03b5ad22508d4090a7424a1976620e4a"; // Replace with your Geoapify API key
                 String apiUrl = "https://api.geoapify.com/v1/routing?";
-                String waypoints = startLat + "," + startLng + "|" + endLat + "," + endLng;
+                String waypoints = startLat + "%2C" + startLng + "%7C" + endLat + "%2C" + endLng;
                 String mode = "drive"; // You can change the mode based on your requirements
 
                 String requestUrl = apiUrl + "waypoints=" + waypoints + "&mode=" + mode + "&apiKey=" + apiKey;
@@ -36,10 +36,10 @@ public class RouteDistanceCalculator {
                     String jsonResponse = response.body().string();
                     Gson gson = new Gson();
                     RouteModel routeModel = gson.fromJson(jsonResponse, RouteModel.class);
-
+                    System.out.println(routeModel.getFeatures().get(0).getProperties().getDistance());
                     // Extract and display the distance from the routeModel
-                    double distance = routeModel.getProperties().getDistance();
-                    String distanceUnits = routeModel.getProperties().getDistance_units();
+                    double distance = routeModel.getFeatures().get(0).getProperties().getDistance();
+                    String distanceUnits = routeModel.getFeatures().get(0).getProperties().getDistance_units();
 
                     System.out.println("Distance between locations: " + distance + " " + distanceUnits);
                 } else {
