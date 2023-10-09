@@ -42,6 +42,8 @@ public class RouteDistanceCalculator {
                     String distanceUnits = routeModel.getFeatures().get(0).getProperties().getDistance_units();
 
                     System.out.println("Distance between locations: " + distance + " " + distanceUnits);
+                    double midwayPoint = distance/2;
+                    System.out.println("MidwayPoint between locations: " + midwayPoint);
                 } else {
                     System.err.println("Error: " + response.code() + " - " + response.message());
                 }
