@@ -15,15 +15,13 @@ public class RouteDistanceCalculator {
                 double startLng = inputs.askForInput();
                 double endLat = inputs.askForInput();
                 double endLng = inputs.askForInput();
-
                 // Construct the API request URL with waypoints and API key
                 String apiKey = "03b5ad22508d4090a7424a1976620e4a"; // Replace with your Geoapify API key
                 String apiUrl = "https://api.geoapify.com/v1/routing?";
                 String waypoints = startLat + "%2C" + startLng + "%7C" + endLat + "%2C" + endLng;
-                String mode = "drive"; // You can change the mode based on your requirements
+                String mode = "drive"; // change the mode based on requirements
 
                 String requestUrl = apiUrl + "waypoints=" + waypoints + "&mode=" + mode + "&apiKey=" + apiKey;
-
                 // Send the API request
                 OkHttpClient client = new OkHttpClient().newBuilder().build();
                 Request request = new Request.Builder()
